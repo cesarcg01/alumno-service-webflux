@@ -26,12 +26,10 @@ public class AlumnoRepositoryTest {
         alumno.setEdad(30);
         alumno.setEstado(Estado.ACTIVO);
 
-        // Insert real en memoria usando R2dbcEntityTemplate
         StepVerifier.create(template.insert(AlumnoEntity.class).using(alumno))
                 .expectNextCount(1)
                 .verifyComplete();
 
-        // Verificar que el repository retorna el alumno insertado
         StepVerifier.create(alumnoRepository.findByEstado(Estado.ACTIVO))
                 .expectNextMatches(a ->
                         a.getId().equals(100L) &&

@@ -7,13 +7,11 @@ import com.ccg.alumno.service.webflux.exception.AlumnoException;
 import com.ccg.alumno.service.webflux.repository.AlumnoRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatcher;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.r2dbc.core.R2dbcEntityTemplate;
-import org.springframework.data.r2dbc.core.ReactiveInsertOperation;
 import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
@@ -57,11 +55,9 @@ public class AlumnoServiceTest {
         entity.setEstado(Estado.ACTIVO);
         entity.setEdad(20);
 
-        // existsById = FALSE
         Mockito.when(alumnoRepository.existsById(2L))
                 .thenReturn(Mono.just(false));
 
-        // Insert correcto
         Mockito.when(template.insert(Mockito.any(AlumnoEntity.class)))
                 .thenReturn(Mono.just(entity));
 
