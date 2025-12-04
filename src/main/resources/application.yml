@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  r2dbc:
+    url: r2dbc:h2:mem:///testdb;DB_CLOSE_DELAY=-1;MODE=LEGACY
+    username: sa
+    password: ""
+  sql:
+    init:
+      mode: always
+
+logging:
+  level:
+    org.springframework.r2dbc.core: DEBUG
