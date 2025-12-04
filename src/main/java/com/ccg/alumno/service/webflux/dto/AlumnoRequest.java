@@ -14,10 +14,10 @@ public class AlumnoRequest {
     @NotNull
     private Long id;
 
-    @NotBlank
+    @NotBlank(message = "El nombre no puede estar vacío")
     private String nombre;
 
-    @NotBlank
+    @NotBlank(message = "El apellido no puede estar vacío")
     private String apellido;
 
     @NotNull
